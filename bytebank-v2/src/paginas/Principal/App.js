@@ -1,9 +1,9 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import { calculaNovoSaldo } from '../../utils';
-import { salvaTransacao } from '../../services/transacoes';
-import { atualizaSaldo } from '../../services/saldo';
 import useListaTransacoes from '../../hooks/useListaTransacoes';
 import useSaldo from '../../hooks/useSaldo';
+import { atualizaSaldo } from '../../services/saldo';
+import { salvaTransacao } from '../../services/transacoes';
+import { calculaNovoSaldo } from '../../utils';
 import estilos from './App.module.css';
 
 import Cabecalho from '../../componentes/Cabecalho';
@@ -36,6 +36,7 @@ export default function App() {
             <Transacao realizarTransacao={realizarTransacao} />
           )}
           <Outlet />
+          <noscript data-testid="local">{location.pathname}</noscript>
         </div>
         <Extrato transacoes={transacoes} />
       </main>
